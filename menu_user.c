@@ -24,7 +24,7 @@ void menuAdmin() {
         printf("1. Gestion des categories\n");
         printf("2. Gestion des produits\n");
         printf("3. Ajouter un utilisateur\n");
-        printf("4. Lister les utilisateurs\n");
+        printf("4. Afficher la liste les utilisateurs\n");
         printf("5. Bloquer / Debloquer un utilisateur\n");
         printf("0. Deconnexion\n");
         printf("Votre choix : ");
@@ -34,7 +34,7 @@ void menuAdmin() {
            // case 1: clearScreen(); menuCategorie(); break;
            // case 2: clearScreen(); menuProduit(); break;
             case 3: clearScreen(); ajouterUtilisateur(); break;
-            case 4: clearScreen(); listerUtilisateurs(); break;
+            case 4: clearScreen(); afficherUtilisateurs(); break;
             case 5: clearScreen(); changerStatutUtilisateur(); break;
             case 0: clearScreen(); printf("Deconnexion...\n"); break;
             default: printf("Choix invalide !\n");

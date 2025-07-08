@@ -74,7 +74,7 @@ void ajouterUtilisateur() {
 
 // LISTER UTILISATEURS
 
-void listerUtilisateurs() {
+void afficherUtilisateurs() {
     FILE *f = fopen("users.dat", "rb");
     if (!f) {
         printf("\033[31m[ERREUR] Impossible d'ouvrir users.dat\033[0m\n");
@@ -82,16 +82,16 @@ void listerUtilisateurs() {
     }
 
     Utilisateur u;
-    int compteur = 0;
+    int cpt= 0;
 
-    // En-t�te stylis�e
+
     printf("\033[1;34m\n=== LISTE DES UTILISATEURS ===\033[0m\n");
-    printf("\033[0;33m%-6s | %-15s | %-15s | %-12s | %-8s | %-6s | %-6s\033[0m\n",
+    printf("\033[0;33m%-6s | %-15s | %-15s | %-12s | %-10s | %-6s | %-6s\033[0m\n",
            "Login", "Nom", "Prenom", "Telephone", "Role", "Actif", "1eCo");
     printf("-------------------------------------------------------------------------------\n");
 
     while (fread(&u, sizeof(Utilisateur), 1, f)) {
-        printf("%-6s | %-15s | %-15s | %-12s | %-8s | %-6s | %-6s\n",
+        printf("%-6s | %-15s | %-15s | %-12s | %-10s | %-6s | %-6s\n",
                u.login,
                u.nom,
                u.prenom,
@@ -100,10 +100,10 @@ void listerUtilisateurs() {
                u.estActif ? "Oui" : "Non",
                u.premiereConnexion ? "Oui" : "Non"
         );
-        compteur++;
+        cpt++;
     }
 
-    if (compteur == 0) {
+    if (cpt == 0) {
         printf("Aucun utilisateur trouve.\n");
     }
 
