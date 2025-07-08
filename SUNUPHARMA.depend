@@ -1,0 +1,25 @@
+# depslib dependency file v1.0
+1751993162 source:c:\users\bousso\desktop\codeblocks c\sousprogramme\sunupharma\main.c
+	<stdio.h>
+	<stdlib.h>
+
+1751817233 source:c:\users\bousso\desktop\codeblocks c\sousprogramme\sunupharma\utils.c
+
+1752003567 source:c:\users\bousso\desktop\codeblocks c\sousprogramme\sunupharma\gestion.c
+	<stdio.h>
+	<string.h>
+	<ctype.h>
+	"gestion_utilisateurs.h"
+
+1751992073 c:\users\bousso\desktop\codeblocks c\sousprogramme\sunupharma\gestion_utilisateurs.h
+
+1751993306 source:c:\users\bousso\desktop\codeblocks c\sousprogramme\sunupharma\menu_user.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"menu_user.h"
+	"gestion_utilisateurs.h"
+
+1752003567 c:\users\bousso\desktop\codeblocks c\sousprogramme\sunupharma\menu_user.h
+

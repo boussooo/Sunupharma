@@ -34,8 +34,12 @@
 		<Unit filename="gestion.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="header.h" />
+		<Unit filename="gestion_utilisateurs.h" />
 		<Unit filename="main.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="users.dat" />
+		<Unit filename="utils.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Extensions>
