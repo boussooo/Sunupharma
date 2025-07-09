@@ -46,7 +46,7 @@ void creerFacture(ProduitVendu ventes[], int taille, float total, char* login) {
 
     fprintf(f, "\nTOTAL À PAYER : %.2f XOF\n", total);
        fprintf(f, "\n----------------------------------------\n");
-fprintf(f, "  Merci pour votre confiance chez Sunupharma 💊\n");
+fprintf(f, "  Merci pour votre confiance chez Sunupharma \n");
 fprintf(f, "  À bientôt pour vos prochains besoins de santé !\n");
 fprintf(f, "----------------------------------------\n");
     fclose(f);
