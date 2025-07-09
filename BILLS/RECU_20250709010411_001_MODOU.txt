@@ -1,0 +1,11 @@
+========================================
+              FACTURE DE VENTE          
+========================================
+Numéro de vente : 20250709010411
+Pharmacien : MODOU
+
+Code   Produit                   Qté  PU (XOF)   Total     
+---------------------------------------------------------------
+ANT10  Amoxicilline 250mg        2     400.00     800.00    
+
+TOTAL À PAYER : 800.00 XOF

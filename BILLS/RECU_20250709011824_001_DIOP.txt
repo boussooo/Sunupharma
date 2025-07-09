@@ -1,0 +1,16 @@
+========================================
+              FACTURE DE VENTE          
+========================================
+Numéro de vente : 20250709011824
+Pharmacien : DIOP
+
+Code   Produit                   Qté  PU (XOF)   Total     
+---------------------------------------------------------------
+MED01  Paracetamol 500mg         2     250.00     500.00    
+
+TOTAL À PAYER : 500.00 XOF
+
+----------------------------------------
+  Merci pour votre confiance chez Sunupharma 
+  À bientôt pour vos prochains besoins de santé !
+----------------------------------------
