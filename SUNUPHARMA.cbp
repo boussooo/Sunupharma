@@ -31,13 +31,15 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="gestion.c">
-			<Option compilerVar="CC" />
-		</Unit>
 		<Unit filename="header.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="rapport.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="rapport.h" />
+		<Unit filename="structure.h" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>
