@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1752263926 source:c:\users\lenovo\desktop\examenlc\gestioncategories\main.c
+	<stdio.h>
+	"categorie.h"
+
+1752268827 c:\users\lenovo\desktop\examenlc\gestioncategories\categorie.h
+
+1752268792 source:c:\users\lenovo\desktop\examenlc\gestioncategories\categorie.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"categorie.h"
+

@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1751629038 source:c:\users\lenovo\desktop\examenlc\sunupharma\gestion.c
+
+1752013431 source:c:\users\lenovo\desktop\examenlc\sunupharma\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
