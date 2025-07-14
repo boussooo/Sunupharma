@@ -10,7 +10,7 @@ int main() {
         printf("4. Afficher les produits\n");
         printf("0. Quitter\n");
         printf("5. Rechercher un produit par code\n");
-        printf("6. Mettre à jour le stock d'un produit\n");
+        printf("6. Mettre a jour le stock d 'un produit\n");
         printf("0. Quitter\n");
         printf("Choisissez une option: ");
         scanf("%d", &choix);

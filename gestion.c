@@ -117,14 +117,14 @@ void mettreAJourStock() {
 }
 
 void sauvegarderProduits() {
-    FILE *fichier = fopen("PRODUCTS.dat", "wb"); // Ouvre le fichier en mode binaire pour écriture
+    FILE *fichier = fopen("PRODUCTS.dat", "wb");
     if (fichier == NULL) {
         printf("Erreur à l'ouverture du fichier PRODUCTS.dat.\n");
         return;
     }
-    fwrite(produits, sizeof(Produit), nb_produits, fichier); // Écrit les produits dans le fichier
+    fwrite(produits, sizeof(Produit), nb_produits, fichier);
     fclose(fichier);
-    printf("Produits sauvegardés avec succès.\n");
+    printf("Produits sauvegardés avec succes.\n");
 }
 
 void chargerProduits() {
