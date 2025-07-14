@@ -48,6 +48,6 @@ void genererRapportJournalier() {
     }
 
     fclose(fRapport);
-    printf("Rapport journalier g�n�r� : %s\n", nomFichier);
+    printf("Rapport journalier generer : %s\n", nomFichier);
 }
 
