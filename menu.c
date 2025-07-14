@@ -3,8 +3,12 @@
 #include <string.h>
 #include <ctype.h>
 
-#include "menu_user.h"
-#include "gestion_utilisateurs.h"
+#include "menu.h"
+#include "produits.h"
+#include "categories.h"
+#include "utilisateurs.h"
+#include "ventes.h"
+#include "rapports.h"
 
 
 // Effacer la console
@@ -31,8 +35,8 @@ void menuAdmin() {
         scanf("%d", &choix);
 
         switch(choix) {
-           // case 1: clearScreen(); menuCategorie(); break;
-           // case 2: clearScreen(); menuProduit(); break;
+           case 1: clearScreen(); menuGestionCategories(); break;
+            case 2: clearScreen(); menuGestionProduits(); break;
             case 3: clearScreen(); ajouterUtilisateur(); break;
             case 4: clearScreen(); afficherUtilisateurs(); break;
             case 5: clearScreen(); changerStatutUtilisateur(); break;
@@ -47,18 +51,18 @@ void menuPharmacien() {
     int choix;
     do {
         printf("\033[1;35m\n=== MENU PHARMACIEN ===\n\033[0m");
-        printf("1. Vendre un produit (� impl�menter)\n");
-        printf("2. Consulter le stock (� impl�menter)\n");
-        printf("3. Imprimer rapport journalier (� impl�menter)\n");
+        printf("1. Vendre un produit \n");
+        printf("2. Consulter le stock \n");
+        printf("3. Imprimer rapport journalier\n");
         printf("0. Deconnexion\n");
         printf("Votre choix : ");
         scanf("%d", &choix);
 
         switch(choix) {
-    //        case 1:  vendreProduits();  break;
-            case 2: /* consulterStock(); */ break;
-            case 3: /* imprimerRapport(); */ break;
-            case 0: clearScreen(); printf("Deconnexion...\n"); break;
+            case 1:  menuGestionVentes();  break;
+          //  case 2:  consulterStock(); break;
+            case 3:  genererRapportJournalier();  break;
+            case 0:  clearScreen(); printf("Deconnexion...\n"); break;
             default: printf("Choix invalide !\n");
         }
     } while(choix != 0);
@@ -116,4 +120,5 @@ int loginUtilisateur() {
 
     return 1;
 }
+
 
