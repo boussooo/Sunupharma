@@ -1,9 +1,23 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <dirent.h>
 #include <time.h>
 #include "ventes.h"
+#include "produits.h"
+#include "utilisateurs.h"
 
+
+Produit p;
+void menuGestionVentes(){
+ char login[6];
+
+    printf("===== MODULE DE TEST : GESTION DES VENTES =====\n");
+    printf("Entrez le login du pharmacien (5 lettres majuscules) : ");
+    scanf("%s", login);
+
+    effectuerVente(login);
+}
 // Génération du numéro de vente : AAAAMMDDHHmmSS
 void genererNumeroVente(char* numero) {
     time_t t = time(NULL);
@@ -79,6 +93,14 @@ void mettreAJourStock(ProduitVendu ventes[], int nb) {
     fclose(f);
 }
 
+time_t convertirDate(const char* dateStr) {
+    struct tm tm_date = {0};
+    sscanf(dateStr, "%4d-%2d-%2d", &tm_date.tm_year, &tm_date.tm_mon, &tm_date.tm_mday);
+    tm_date.tm_year -= 1900;  // Année depuis 1900
+    tm_date.tm_mon -= 1;      // Mois de 0 à 11
+    return mktime(&tm_date);
+}
+
 // Fonction principale de vente
 void effectuerVente(char* login) {
     ProduitVendu ventes[50];
@@ -107,16 +129,17 @@ void effectuerVente(char* login) {
             if (strcmp(p.code, code) == 0) {
                 trouve = 1;
                 time_t maintenant = time(NULL);
-                if (difftime(p.datePeremption, maintenant) <= 0) {
+                time_t datePeremption = convertirDate(p.date_peremption);
+                if (difftime(datePeremption, maintenant) <= 0) {
                     char msg[80];
-                    sprintf(msg, "[ERREUR] Le médicament %s est périmé.", p.nom);
+                    sprintf(msg, "[ERREUR] Le médicament %s est périmé.", p.designation);
                     afficherMessage(msg, "\033[0;31m");
                     break;
                 }
 
                 if (p.quantite >= quantite) {
                     strcpy(ventes[nb].code, p.code);
-                    strcpy(ventes[nb].nom, p.nom);
+                    strcpy(ventes[nb].nom, p.designation);
                     ventes[nb].quantiteVendue = quantite;
                     ventes[nb].prixUnitaire = p.prix;
                     ventes[nb].prixTotal = quantite * p.prix;
@@ -125,7 +148,7 @@ void effectuerVente(char* login) {
                     afficherMessage("[✓] Medicament ajoute a la commande.", "\033[0;32m");
                 } else {
                     char msg[80];
-                    sprintf(msg, "[ERREUR] Stock insuffisant pour %s.", p.nom);
+                    sprintf(msg, "[ERREUR] Stock insuffisant pour %s.", p.designation);
                     afficherMessage(msg, "\033[0;31m");
                 }
 
@@ -153,4 +176,62 @@ void effectuerVente(char* login) {
     } else {
         afficherMessage("[INFO] Aucune vente enregistree.", "\033[0;33m");
     }
+}
+int calculerVentesDuJour(const char* date, float* totalVentes, int* nbMedicament) {
+    char dossier[] = "BILLS";
+    char prefix[20];
+    sprintf(prefix, "RECU_%s", date);
+
+    *totalVentes = 0;
+    *nbMedicament = 0;
+
+    // Ouvre le dossier et lit les fichiers
+    DIR* dir = opendir(dossier);
+    if (!dir) return 0;
+
+    struct dirent* entry;
+    while ((entry = readdir(dir)) != NULL) {
+        if (strstr(entry->d_name, prefix)) {
+            char chemin[120];
+            sprintf(chemin, "%s/%s", dossier, entry->d_name);
+
+            FILE* f = fopen(chemin, "r");
+            if (!f) continue;
+
+            char ligne[200];
+            while (fgets(ligne, sizeof(ligne), f)) {
+                float prix;
+                int qte;
+                if (sscanf(ligne, "%*s %*s %d %*f %f", &qte, &prix) == 2) {
+                    *totalVentes += prix;
+                    *nbMedicament += qte;
+                }
+            }
+
+            fclose(f);
+        }
+    }
+
+    closedir(dir);
+    return 1;
+}
+void verifierStocksCritiques(Produit produits[], int nb, FILE* fRapport) {
+    for (int i = 0; i < nb; i++) {
+        if (produits[i].quantite < 5) {
+            fprintf(fRapport, "- %s (%s) : %d unités restantes\n",
+                    produits[i].designation, produits[i].code, produits[i].quantite);
+        }
+    }
+}
+int chargerProduits(Produit produits[], int* nb) {
+    FILE* f = fopen("PRODUCTS.dat", "rb");
+    if (!f) return 0;
+
+    *nb = 0;
+    while (fread(&produits[*nb], sizeof(Produit), 1, f)) {
+        (*nb)++;
+    }
+
+    fclose(f);
+    return 1;
 }
