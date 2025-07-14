@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
-#include "gestion_utilisateurs.h"
+#include "utilisateurs.h"
 
 #define FICHIER_UTILISATEURS "users.dat"
 
@@ -88,7 +88,7 @@ void afficherUtilisateurs() {
     printf("\033[1;34m\n=== LISTE DES UTILISATEURS ===\033[0m\n");
     printf("\033[0;33m%-6s | %-15s | %-15s | %-12s | %-10s | %-6s | %-6s\033[0m\n",
            "Login", "Nom", "Prenom", "Telephone", "Role", "Actif", "1eCo");
-    printf("-------------------------------------------------------------------------------\n");
+    printf("------------------------------------------------------------------------------------\n");
 
     while (fread(&u, sizeof(Utilisateur), 1, f)) {
         printf("%-6s | %-15s | %-15s | %-12s | %-10s | %-6s | %-6s\n",
@@ -210,6 +210,7 @@ void changerStatutUtilisateur() {
         printf("\033[31m[ERREUR] Utilisateur non trouve.\033[0m\n");
     }
 }
+
 
 
 
