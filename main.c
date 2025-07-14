@@ -9,6 +9,9 @@ int main() {
         printf("3. Supprimer un produit\n");
         printf("4. Afficher les produits\n");
         printf("0. Quitter\n");
+        printf("5. Rechercher un produit par code\n");
+        printf("6. Mettre à jour le stock d'un produit\n");
+        printf("0. Quitter\n");
         printf("Choisissez une option: ");
         scanf("%d", &choix);
 
@@ -25,11 +28,18 @@ int main() {
             case 4:
                 afficherProduits();
                 break;
+                case 5:
+                rechercherProduitParCode();
+                break;
+            case 6:
+                mettreAJourStock();
+                break;
             case 0:
+                 sauvegarderProduits();
                 printf("Au revoir!\n");
                 break;
             default:
-                printf("Option invalide, veuillez réessayer.\n");
+                printf("Option invalide, veuillez reessayer.\n");
         }
     } while (choix != 0);
 

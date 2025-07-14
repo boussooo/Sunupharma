@@ -1,3 +1,13 @@
 # depslib dependency file v1.0
-1751628807 source:c:\users\feind\desktop\projetlanc\sunupharma\gestion.c
+1752490392 source:c:\users\feind\desktop\projetlanc\sunupharma\gestion.c
+	"header.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1752489673 source:c:\users\feind\desktop\projetlanc\sunupharma\main.c
+	"header.h"
+	<stdio.h>
+
+1752490628 c:\users\feind\desktop\projetlanc\sunupharma\header.h
 

@@ -3,7 +3,7 @@
 
 #define MAX_PRODUCTS 100
 #define CODE_LENGTH 6
-#define NAME_LENGTH 50
+#define NOM_LENGTH 50
 #define CATEGORY_LENGTH 30
 
 typedef struct {
@@ -20,5 +20,8 @@ void ajouterProduit();
 void modifierProduit();
 void supprimerProduit();
 void afficherProduits();
-
+void rechercherProduitParCode();
+void mettreAJourStock();
+void sauvegarderProduits();
+void chargerProduits();
 #endif

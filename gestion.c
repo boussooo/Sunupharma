@@ -47,7 +47,7 @@ void modifierProduit() {
             scanf(" %[^\n]", produits[i].categorie);
             printf("Modifier la date de peremption (actuel: %s): ", produits[i].date_peremption);
             scanf("%s", produits[i].date_peremption);
-            printf("Produit modifie avec succes.\n");
+            printf("Produit modifié avec succès.\n");
             return;
         }
     }
@@ -79,4 +79,61 @@ void afficherProduits() {
                produits[i].code, produits[i].designation, produits[i].prix,
                produits[i].quantite, produits[i].categorie, produits[i].date_peremption);
     }
+}
+
+void rechercherProduitParCode() {
+    char code[CODE_LENGTH];
+    printf("Entrez le code du produit à rechercher : ");
+    scanf("%s", code);
+
+    for (int i = 0; i < nb_produits; i++) {
+        if (strcmp(produits[i].code, code) == 0) {
+            printf("Produit trouvé : %s, Prix : %.2f, Stock : %d\n",
+                   produits[i].designation, produits[i].prix, produits[i].quantite);
+            return;
+        }
+    }
+    printf("Produit non trouvé.\n");
+}
+
+void mettreAJourStock() {
+    char code[CODE_LENGTH];
+    int quantite;
+
+    printf("Entrez le code du produit à mettre à jour : ");
+    scanf("%s", code);
+    printf("Entrez la quantité à ajouter : ");
+    scanf("%d", &quantite);
+
+    for (int i = 0; i < nb_produits; i++) {
+        if (strcmp(produits[i].code, code) == 0) {
+            produits[i].quantite += quantite; // Met à jour la quantité
+            printf("Stock mis à jour pour le produit : %s. Nouvelle quantité : %d\n",
+                   produits[i].designation, produits[i].quantite);
+            return;
+        }
+    }
+    printf("Produit non trouvé pour mise à jour.\n");
+}
+
+void sauvegarderProduits() {
+    FILE *fichier = fopen("PRODUCTS.dat", "wb"); // Ouvre le fichier en mode binaire pour écriture
+    if (fichier == NULL) {
+        printf("Erreur à l'ouverture du fichier PRODUCTS.dat.\n");
+        return;
+    }
+    fwrite(produits, sizeof(Produit), nb_produits, fichier); // Écrit les produits dans le fichier
+    fclose(fichier);
+    printf("Produits sauvegardés avec succès.\n");
+}
+
+void chargerProduits() {
+    FILE *fichier = fopen("PRODUCTS.dat", "rb"); // Ouvre le fichier en mode binaire pour lecture
+    if (fichier == NULL) {
+        printf("Erreur à l'ouverture du fichier PRODUCTS.dat.\n");
+        return;
+    }
+    nb_produits = fread(produits, sizeof(Produit), MAX_PRODUCTS, fichier); // Lit les produits du fichier
+    fclose(fichier);
+    printf("Produits chargés avec succès. Nombre de produits : %d\n", nb_produits);
 }
