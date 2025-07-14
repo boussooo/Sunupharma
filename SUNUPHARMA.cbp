@@ -38,6 +38,11 @@
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="produits.c" />
+		<Unit filename="categories.c" />
+		<Unit filename="utilisateurs.c" />
+		<Unit filename="ventes.c" />
+		<Unit filename="rapports.c" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>
