@@ -2,9 +2,33 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "categorie.h"
+#include "categories.h"
 
 #define FICHIER_CATEGORIE "CATEGORIES.dat"
+
+void menuGestionCategories(){
+    int choix;
+    do {
+        printf("Menu Categories :\n");
+        printf("1. Ajouter\n");
+        printf("2. Afficher\n");
+        printf("3. Rechercher\n");
+        printf("4. Supprimer\n");
+        printf("0. Quitter\n");
+        printf("Choix : ");
+        scanf("%d%*c", &choix);
+
+        switch (choix) {
+            case 1: ajouterCategorie(); break;
+            case 2: afficherCategories(); break;
+            case 3: rechercherCategorie(); break;
+            case 4: supprimerCategorie(); break;
+            case 0: printf("Fermeture.\n"); break;
+            default: printf("Choix invalide.\n");
+        }
+
+    } while (choix != 0);
+}
 
 void ajouterCategorie() {
     FILE *f = fopen(FICHIER_CATEGORIE, "ab+");
@@ -76,7 +100,7 @@ void rechercherCategorie() {
 
 void supprimerCategorie() {
     int idSupprimer;
-    printf("Entrez l'ID à supprimer : ");
+    printf("Entrez l'ID ï¿½ supprimer : ");
     scanf("%d%*c", &idSupprimer);
 
     FILE *f = fopen(FICHIER_CATEGORIE, "rb");
@@ -112,18 +136,18 @@ void supprimerCategorie() {
     FILE *ft = fopen("categories_export.txt", "w");
 
     if (!fb || !ft) {
-        printf("Erreur d'accès aux fichiers.\n");
+        printf("Erreur d'accï¿½s aux fichiers.\n");
         return;
     }
 
     Categorie cat;
     while (fread(&cat, sizeof(Categorie), 1, fb)) {
-        fprintf(ft, "ID : %d | Libellé : %s\n", cat.id, cat.libelle);
+        fprintf(ft, "ID : %d | Libellï¿½ : %s\n", cat.id, cat.libelle);
     }
 
     fclose(fb);
     fclose(ft);
-    printf("Exportation terminée vers 'categories_export.txt'.\n");
+    printf("Exportation terminï¿½e vers 'categories_export.txt'.\n");
 }
 
 }
